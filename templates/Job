@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: data-importer
+  namespace: bos-data-importer
+spec:
+  parallelism: 1    
+  completions: 1
+  template:
+    metadata:
+      name: data-importer
+    spec:
+      volumes:
+          - name: data-volume
+            persistentVolumeClaim:
+              claimName: data-pvc
+      containers:
+      - name: data-importer
+        image: data-importer:latest
+        command: ["/app/import_files.sh"]
+        volumeMounts:
+            - mountPath: /data/
+              name: data-volume
+      restartPolicy: Never
+      activeDeadlineSeconds: 1800
