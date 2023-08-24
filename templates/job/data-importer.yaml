@@ -6,6 +6,7 @@ metadata:
 spec:
   parallelism: 1    
   completions: 1
+  backoffLimit: 1
   template:
     metadata:
       name: data-importer

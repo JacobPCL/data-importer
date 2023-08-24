@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: data-importer
+  namespace: bos-data-importer
+spec:
+  schedule: '@daily'
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: data-importer
+        spec:
+          volumes:
+              - name: data-volume
+                persistentVolumeClaim:
+                  claimName: data-pvc
+              - name: di-script-volume
+                configMap:
+                  name: data-importer-script
+          containers:
+          - name: data-importer
+            image: data-importer-is:latest
+            command: ["/app/start_app.sh"]
+            volumeMounts:
+                - mountPath: /data/
+                  name: data-volume
+                - mountPath: /script/
+                  name: di-script-volume
+          restartPolicy: Never
+          activeDeadlineSeconds: 1800
