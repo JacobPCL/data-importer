@@ -11,7 +11,7 @@ spec:
     contextDir: app                    
     dockerfile: |-
       FROM registry.access.redhat.com/ubi8/ubi-minimal
-      RUN microdnf -y install bash openssh-clients rsync grep
+      RUN microdnf -y install bash openssh-clients rsync sshpass
       WORKDIR /app
       COPY ./start_app.sh /app/start_app.sh
       RUN chmod a+rx /app/start_app.sh
