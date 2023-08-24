@@ -7,6 +7,6 @@ immutable: false
 data:
   import_script.sh: |-
     #!/bin/bash
-    echo "" > passfile
-    chmod 600 passfile
-    rsync --password-file=passfile ksol@192.168.106.128:/test/ /data
+    rsync -a --password-file=/script/Nalesniki22! ksol@192.168.106.128:/test/ /data
+  secretpass: |-
+    Nalesniki22!
