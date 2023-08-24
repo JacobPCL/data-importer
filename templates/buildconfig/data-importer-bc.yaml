@@ -1,7 +1,7 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: data-importer
+  name: data-importer-bc
   namespace: bos-data-importer
 spec:
   source:
@@ -13,8 +13,8 @@ spec:
       FROM registry.access.redhat.com/ubi8/ubi-minimal
       RUN microdnf -y install bash openssh-clients rsync grep
       WORKDIR /app
-      COPY ./import_files.sh /app/import_files.sh
-      RUN chmod a+rx /app/import_files.sh
+      COPY ./start_app.sh /app/start_app.sh
+      RUN chmod a+rx /app/start_app.sh
   strategy:
     type: Docker
   output: 
