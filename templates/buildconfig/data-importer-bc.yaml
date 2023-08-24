@@ -17,7 +17,7 @@ spec:
       RUN chmod a+rx /app/start_app.sh
       RUN chmod a+rwx /app
       RUN mkdir /.ssh
-      RUN chmod a+rwx /app
+      RUN chmod a+rwx /.ssh
   strategy:
     type: Docker
   output: 

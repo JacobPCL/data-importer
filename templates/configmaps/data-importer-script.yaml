@@ -7,4 +7,5 @@ immutable: false
 data:
   import_script.sh: |-
     #!/bin/bash
-    sshpass -p 'Nalesniki22!' rsync --progress -avz -e ssh ksol@192.168.106.128:/test/ /data
+    rsync -ah --omit-dir-times -e 'sshpass -p "Nalesniki22!" ssh -o StrictHostKeyChecking=no' ksol@192.168.106.128:/test/ /data
+     ls -Rlh /data
