@@ -20,4 +20,4 @@ spec:
   output: 
     to:
       kind: ImageStreamTag
-      name: data-importer:latest
+      name: data-importer-is:latest
