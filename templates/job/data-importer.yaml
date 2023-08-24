@@ -20,7 +20,7 @@ spec:
       containers:
       - name: data-importer
         image: data-importer-is:latest
-        command: ["start_app.sh"]
+        command: ["/app/start_app.sh"]
         volumeMounts:
             - mountPath: /data/
               name: data-volume

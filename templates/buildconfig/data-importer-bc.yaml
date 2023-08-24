@@ -21,3 +21,5 @@ spec:
     to:
       kind: ImageStreamTag
       name: data-importer-is:latest
+successfulBuildsHistoryLimit: 2 
+failedBuildsHistoryLimit: 2 
