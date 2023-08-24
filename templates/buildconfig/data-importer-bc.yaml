@@ -15,6 +15,9 @@ spec:
       WORKDIR /app
       COPY ./start_app.sh /app/start_app.sh
       RUN chmod a+rx /app/start_app.sh
+      RUN chmod a+rwx /app
+      RUN mkdir /.ssh
+      RUN chmod a+rwx /app
   strategy:
     type: Docker
   output: 
